@@ -1,0 +1,1 @@
+export const ENV_PREFIX = 'HK01WEB' as any;
