@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import getEnv from '@/util/getEnv';
 import { ENV_PREFIX } from '@/constant';
 import EnvProvider from '@/provider/env';
+import Script from 'next/script'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -23,7 +24,12 @@ export default function RootLayout({
 
   return (
     <html>
-      <head></head>
+      <head>
+        <Script
+          id="runtimeEnv"
+          strategy="beforeInteractive"
+        >{`window.${ENV_PREFIX} = ${JSON.stringify(env, null, 2)}`}</Script>
+      </head>
       <body>
         <EnvProvider value={env}>
           {children}

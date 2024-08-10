@@ -28,13 +28,18 @@ const env = getEnv();
 ```
 
 ### Client Side
-Use context passed from `src/app/layout.tsx`
+Use context or window[namespace] passed from `src/app/layout.tsx`
 ```jsx
 // see src/app/client/page.tsx
 import { useContext } from 'react';
 import { EnvContext } from "../../provider/env";
 
 const env = useContext(EnvContext);
+
+// or
+useEffect(() => {
+    console.log('env from window', window[ENV_PREFIX]);
+}, []);
 ```
 
 ## Reference
